@@ -1,27 +1,95 @@
-# Simba Profile Page
+# 🦁 Simba HTML App
 
-This project is dedicated to creating an HTML page for the character Simba profile. The page is responsive and uses SCSS styles for beautiful design and good responsiveness on various devices.
+A simple multi-container project built with **HTML, CSS, Nginx, Alpine API, and PostgreSQL**, fully Dockerized and managed via **Docker Compose**.  
+This project demonstrates how to connect a frontend, backend API, and database within an isolated Docker environment.
 
-## Description
+---
 
-The project is a profile page for the character Simba with responsive design. It is designed to look good on both mobile devices and desktops. The project uses technologies like HTML, SCSS, and basic JavaScript for dynamic effects.
+## 🚀 Project Structure
 
-## Technologies
+```
+Simba-HTML/
+│
+├── alpine-server/           # Simple API built on Alpine (httpd)
+├── css/                     # Styles
+├── images/                  # Static images
+├── nginx-proxy/             # Nginx reverse proxy configuration
+├── .github/workflows/       # GitHub Actions CI/CD configuration
+│   └── docker.yml
+│
+├── docker-compose.yml       # Main Docker Compose configuration
+├── Dockerfile               # Frontend build
+├── package.json             # For build/automation tasks (npm)
+└── index.html               # Main HTML page
+```
 
-- HTML
-- SCSS
-- CSS
+---
 
-## Project Structure
+## ⚙️ Requirements
 
-- **index.html** — main HTML file.
-- **styles.scss** — SCSS styles file for page layout.
-- **script.js** — scripts for dynamic effects.
+Before running the project, make sure you have installed:
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-## Installation
+---
 
-To run the project locally, follow these steps:
+## 🐳 Run Locally
 
-1. Clone the repository to your local machine:
-   ```bash
-   git clone https://github.com/And-Koch/Simba-HTML.git
+```bash
+git clone https://github.com/AndKoch-dev/Simba-HTML.git
+cd Simba-HTML
+docker-compose up -d --build
+```
+
+Once the containers are up, open in your browser:
+
+👉 [http://localhost:8081](http://localhost:8081)
+
+---
+
+## 🧩 Containers Overview
+
+| Container        | Description                      | Port |
+|------------------|----------------------------------|------|
+| `nginx-proxy-v1` | Reverse proxy for the app        | 8081 |
+| `simba-html-v1`  | Frontend (HTML/CSS)              | 80   |
+| `alpine-api-v1`  | Simple backend API (Alpine)      | —    |
+| `postgres-db`    | PostgreSQL database              | 5432 |
+
+---
+
+## 🔄 CI/CD Pipeline (GitHub Actions)
+
+The CI/CD pipeline is defined in:
+```
+.github/workflows/docker.yml
+```
+
+It performs:
+- Workflow syntax validation  
+- Docker image build & test  
+- Future deployment support (Docker Hub / VPS server)
+
+---
+
+## 🔗 API Endpoints Example
+
+| Endpoint | Method | Description | Example Response |
+|-----------|---------|-------------|------------------|
+| `/api` | GET | Check API connection | `API is working` |
+| `/api/users` | GET | List of users | `[{"id":1,"name":"Alice","email":"alice@mail.com"},{"id":2,"name":"Bob","email":"bob@mail.com"}]` |
+
+---
+
+## 🧠 Author
+
+**Ando Kocharyan**  
+📧 [GitHub: AndKoch-dev](https://github.com/AndKoch-dev)
+
+---
+
+## 🪄 License
+
+This project is licensed under the **MIT License**.  
+Feel free to use, modify, and distribute it for personal or educational purposes.
+

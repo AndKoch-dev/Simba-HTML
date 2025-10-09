@@ -1,0 +1,25 @@
+name: Build and Test Docker App
+
+on:
+  pushe:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker images
+        run: docker compose build
+
+      - name: Run containers
+        run: docker compose up -d
+
+      - name: Check running containers
+        run: docker ps -a

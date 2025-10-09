@@ -51,9 +51,9 @@ Once the containers are up, open in your browser:
 
 | Container        | Description                      | Port |
 |------------------|----------------------------------|------|
-| `nginx-proxy-v1` | Reverse proxy for the app        | 8081 |
-| `simba-html-v1`  | Frontend (HTML/CSS)              | 80   |
-| `alpine-api-v1`  | Simple backend API (Alpine)      | —    |
+| `nginx-proxy` | Reverse proxy for the app        | 8081 |
+| `simba-html`  | Frontend (HTML/CSS)              | 80   |
+| `alpine-api`  | Simple backend API (Alpine)      | —    |
 | `postgres-db`    | PostgreSQL database              | 5432 |
 
 ---

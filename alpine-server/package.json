@@ -1,0 +1,10 @@
+{
+  "name": "alpine-api",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/server.js",
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.11.1"
+ }
+}

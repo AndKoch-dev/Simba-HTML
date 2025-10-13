@@ -25,16 +25,30 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: Build Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: true
+          push: false
           pulle: true
           no-cache: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+        
+      - name: Test container startup
+        run: |
+          echo "🚀 Running container for test..."
+          docker run -d --name test-container -p 8080:80 ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+          sleep 5
+          echo "🔍 Checking container response..."
+          curl -sSf http://localhost:8080 || (docker logs test-container && exit 1)
+          echo "✅ Container test passed!"
+          docker rm -f test-container
 
-      - name: Verify image pushed
-        run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
+      - name: Push image to Docker Hub
+        uses: docker/build-push-action@v5
+        with: 
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
 
 

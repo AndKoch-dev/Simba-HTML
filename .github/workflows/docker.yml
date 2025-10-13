@@ -30,6 +30,8 @@ jobs:
         with:
           context: .
           push: true
+          pulle: true
+          no-cache: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
 
       - name: Verify image pushed

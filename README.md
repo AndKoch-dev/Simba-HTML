@@ -25,42 +25,42 @@ Before running the project, make sure you have installed:
 
 ## 🐳 Run Locally
 
-```bash
 git clone https://github.com/AndKoch-dev/Simba-HTML.git
 cd Simba-HTML
 docker-compose up -d --build
+
 Once the containers are up, open in your browser: http://localhost:8081
 
-🧩 Containers Overview
+## 🧩 Containers Overview
 
-| Container   | Description                 | Port |
-| ----------- | --------------------------- | ---- |
-| nginx-proxy | Reverse proxy for the app   | 8081 |
-| simba-html  | Frontend (HTML/CSS)         | 80   |
-| alpine-api  | Simple backend API (Alpine) | —    |
-| postgres-db | PostgreSQL database         | 5432 |
+| Container     | Description                 | Port  |
+|----------------|-----------------------------|-------|
+| nginx-proxy    | Reverse proxy for the app   | 8081  |
+| simba-html     | Frontend (HTML/CSS)         | 80    |
+| alpine-api     | Simple backend API (Alpine) | —     |
+| postgres-db    | PostgreSQL database         | 5432  |
 
-🔄 CI/CD Pipeline (GitHub Actions)
+## 🔄 CI/CD Pipeline (GitHub Actions)
 
-The CI/CD pipeline is defined in .github/workflows/docker.yml. It performs:
+The CI/CD pipeline is defined in `.github/workflows/docker.yml`. It performs:
 
-Workflow syntax validation
+- Workflow syntax validation  
+- Docker image build & test  
+- Future deployment support (Docker Hub / VPS server)
 
-Docker image build & test
+## 🔗 API Endpoints Example
 
-Future deployment support (Docker Hub / VPS server)
+| Endpoint     | Method | Description          | Example Response |
+|---------------|--------|----------------------|------------------|
+| /api          | GET    | Check API connection | API is working |
+| /api/users    | GET    | List of users        | [{"id":1,"name":"Alice","email":"alice@mail.com"},{"id":2,"name":"Bob","email":"bob@mail.com"}] |
 
-🔗 API Endpoints Example
+## 🧠 Author
 
-| Endpoint   | Method | Description          | Example Response                                                                                                                                |
-| ---------- | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| /api       | GET    | Check API connection | API is working                                                                                                                                  |
-| /api/users | GET    | List of users        | [{"id":1,"name":"Alice","email":"[alice@mail.com](mailto:alice@mail.com)"},{"id":2,"name":"Bob","email":"[bob@mail.com](mailto:bob@mail.com)"}] |
+**Ando Kocharyan**  
+📧 GitHub: [AndKoch-dev](https://github.com/AndKoch-dev)
 
-🧠 Author
-Ando Kocharyan
-📧 GitHub: AndKoch-dev
+## 🪄 License
 
-🪄 License
-
-This project is licensed under the MIT License. Feel free to use, modify, and distribute it for personal or educational purposes.
+This project is licensed under the **MIT License**.  
+Feel free to use, modify, and distribute it for personal or educational purposes.

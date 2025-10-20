@@ -7,5 +7,8 @@ RUN npm install --legacy-peer-deps
 
 COPY . . 
 
+RUN apk add --no-cache curl bash
+
 EXPOSE 80
-CMD ["node", "src/server.js"]
+
+CMD ["./wait-for-it.sh", "postgres-db:5432", "--", "node", "src/server.js"]

@@ -1,13 +1,9 @@
 # 🦁 Simba HTML App
 
-A simple multi-container project built with **HTML, CSS, Nginx, Alpine API, and PostgreSQL**, fully Dockerized and managed via **Docker Compose**.  
-This project demonstrates how to connect a frontend, backend API, and database within an isolated Docker environment.
-
----
+A simple multi-container project built with HTML, CSS, Nginx, Alpine API, and PostgreSQL, fully Dockerized and managed via Docker Compose. This project demonstrates how to connect a frontend, backend API, and database within an isolated Docker environment.
 
 ## 🚀 Project Structure
 
-```
 Simba-HTML/
 │
 ├── alpine-server/           # Simple API built on Alpine (httpd)
@@ -16,22 +12,16 @@ Simba-HTML/
 ├── nginx-proxy/             # Nginx reverse proxy configuration
 ├── .github/workflows/       # GitHub Actions CI/CD configuration
 │   └── docker.yml
-│
 ├── docker-compose.yml       # Main Docker Compose configuration
 ├── Dockerfile               # Frontend build
 ├── package.json             # For build/automation tasks (npm)
 └── index.html               # Main HTML page
-```
-
----
 
 ## ⚙️ Requirements
 
 Before running the project, make sure you have installed:
-- [Docker](https://docs.docker.com/get-docker/)
-- [Docker Compose](https://docs.docker.com/compose/install/)
-
----
+- Docker
+- Docker Compose
 
 ## 🐳 Run Locally
 
@@ -39,57 +29,38 @@ Before running the project, make sure you have installed:
 git clone https://github.com/AndKoch-dev/Simba-HTML.git
 cd Simba-HTML
 docker-compose up -d --build
-```
+Once the containers are up, open in your browser: http://localhost:8081
 
-Once the containers are up, open in your browser:
+🧩 Containers Overview
 
-👉 [http://localhost:8081](http://localhost:8081)
+| Container   | Description                 | Port |
+| ----------- | --------------------------- | ---- |
+| nginx-proxy | Reverse proxy for the app   | 8081 |
+| simba-html  | Frontend (HTML/CSS)         | 80   |
+| alpine-api  | Simple backend API (Alpine) | —    |
+| postgres-db | PostgreSQL database         | 5432 |
 
----
+🔄 CI/CD Pipeline (GitHub Actions)
 
-## 🧩 Containers Overview
+The CI/CD pipeline is defined in .github/workflows/docker.yml. It performs:
 
-| Container        | Description                      | Port |
-|------------------|----------------------------------|------|
-| `nginx-proxy` | Reverse proxy for the app        | 8081 |
-| `simba-html`  | Frontend (HTML/CSS)              | 80   |
-| `alpine-api`  | Simple backend API (Alpine)      | —    |
-| `postgres-db`    | PostgreSQL database              | 5432 |
+Workflow syntax validation
 
----
+Docker image build & test
 
-## 🔄 CI/CD Pipeline (GitHub Actions)
+Future deployment support (Docker Hub / VPS server)
 
-The CI/CD pipeline is defined in:
-```
-.github/workflows/docker.yml
-```
+🔗 API Endpoints Example
 
-It performs:
-- Workflow syntax validation  
-- Docker image build & test  
-- Future deployment support (Docker Hub / VPS server)
+| Endpoint   | Method | Description          | Example Response                                                                                                                                |
+| ---------- | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| /api       | GET    | Check API connection | API is working                                                                                                                                  |
+| /api/users | GET    | List of users        | [{"id":1,"name":"Alice","email":"[alice@mail.com](mailto:alice@mail.com)"},{"id":2,"name":"Bob","email":"[bob@mail.com](mailto:bob@mail.com)"}] |
 
----
+🧠 Author
+Ando Kocharyan
+📧 GitHub: AndKoch-dev
 
-## 🔗 API Endpoints Example
+🪄 License
 
-| Endpoint | Method | Description | Example Response |
-|-----------|---------|-------------|------------------|
-| `/api` | GET | Check API connection | `API is working` |
-| `/api/users` | GET | List of users | `[{"id":1,"name":"Alice","email":"alice@mail.com"},{"id":2,"name":"Bob","email":"bob@mail.com"}]` |
-
----
-
-## 🧠 Author
-
-**Ando Kocharyan**  
-📧 [GitHub: AndKoch-dev](https://github.com/AndKoch-dev)
-
----
-
-## 🪄 License
-
-This project is licensed under the **MIT License**.  
-Feel free to use, modify, and distribute it for personal or educational purposes.
-
+This project is licensed under the MIT License. Feel free to use, modify, and distribute it for personal or educational purposes.
